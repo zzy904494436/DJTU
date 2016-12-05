@@ -25,6 +25,7 @@ public class GuideActivity extends AppCompatActivity {
     private List<ImageView> list_image;
     private int[] image_arr = {R.mipmap.guide_one,R.mipmap.guide_two,R.mipmap.guide_three};
     private Guide_PagerAdapter adapter;
+
     private EdgeEffectCompat leftEdge;
     private EdgeEffectCompat rightEdge;
     //小白点
@@ -118,6 +119,7 @@ public class GuideActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         btn_intent.setOnClickListener(new View.OnClickListener() {
             @Override

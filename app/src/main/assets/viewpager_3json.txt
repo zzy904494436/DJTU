@@ -1,0 +1,111 @@
+{
+    "data": [
+        {
+            "list": "topic_f1",
+            "m_value": 3,
+            "topic": [
+                {
+                    "id": "60477",
+                    "title": "2016年度茅以升科学技术奖学生奖项评审会暨第十一届高校学生工作论坛在我校举行",
+                    "image": "http://news.djtu.edu.cn/_uploadimg/image/20161114/20161114163058175817.jpg"
+                },
+                {
+                    "id": "60476 ",
+                    "title": "党委书记刘晓英会见西岗区副区长王敬",
+                    "image": "http://news.djtu.edu.cn/_uploadimg/image/20161110/20161110164223982398.jpg"
+                },
+                {
+                    "id": "60475 ",
+                    "title": "我校2016年大学生校园文化节开幕",
+                    "image": "http://news.djtu.edu.cn/_uploadimg/image/20161110/20161110161591079107.jpg"
+                },
+                {
+                    "id": "60473 ",
+                    "title": "我校与软件企业联合培养软件人才",
+                    "image": "http://news.djtu.edu.cn/_uploadimg/image/20161109/20161109170414651465.jpg"
+                },
+                {
+                    "id": "60472 ",
+                    "title": "我校学子在”中普杯”辽宁省第四届大学生创业大赛中再获佳绩",
+                    "image": "http://news.djtu.edu.cn/_uploadimg/image/20161107/20161107172941944194.png"
+                },
+                {
+                    "id": "60470",
+                    "title": "我校召开党委全委（扩大）会议学习贯彻党的十八届六中全会精神",
+                    "image": "http://news.djtu.edu.cn/_uploadimg/image/20161102/20161102082695659565.jpg"
+                }
+            ]
+        },
+        {
+            "list": "topic_f2",
+            "m_value": 4,
+            "topic": [
+                {
+                    "id": "201",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "202",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "203",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "204",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "205",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "206",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                }
+            ]
+        },
+        {
+            "list": "topic_f4",
+            "topic": [
+                {
+                    "id": "301",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "302",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "303",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "304",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "305",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                },
+                {
+                    "id": "306",
+                    "title": "xxxxxxxxxxxx",
+                    "image": "yyyyyyyyyyyy"
+                }
+            ]
+        }
+    ]
+}

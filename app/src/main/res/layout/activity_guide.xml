@@ -42,12 +42,12 @@
     </LinearLayout>
     <Button
         android:id="@+id/btn_intent"
-        android:layout_width="130dp"
-        android:layout_height="48dp"
-        android:alpha="30"
-        android:text="》》》》》"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:alpha="0"
         android:visibility="gone"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/idot_layout"
+        android:layout_marginBottom="10dp"
         />
 </RelativeLayout>

@@ -9,17 +9,15 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import com.qianfeng.mymac.djtu.R;
 
 public class WelcomeActivity extends AppCompatActivity {
-
 
     private SharedPreferences sp ;
     private Intent intent;
     //倒计时
     private MyCountDownTimer mc;
-    private TextView tv;
+    private TextView time_welcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +38,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 intent.setClass(WelcomeActivity.this,MainActivity.class);
                 break;
         }
-        tv = (TextView) findViewById(R.id.tv);
+        time_welcome = (TextView) findViewById(R.id.time_welcome);
         mc = new MyCountDownTimer(4000, 1000);
         mc.start();
 
@@ -56,13 +54,15 @@ public class WelcomeActivity extends AppCompatActivity {
 
     class MyCountDownTimer extends CountDownTimer {
         /**
+         *
          * @param millisInFuture
          * 表示以毫秒为单位 倒计时的总数
          *
-         * 例如 millisInFuture=1000 表示1秒
          *
+         * 例如 millisInFuture=1000 表示1秒
          * @param countDownInterval
          * 表示 间隔 多少微秒 调用一次 onTick 方法
+         *
          *
          * 例如: countDownInterval =1000 ; 表示每1000毫秒调用一次onTick()
          *
@@ -71,10 +71,10 @@ public class WelcomeActivity extends AppCompatActivity {
             super(millisInFuture, countDownInterval);
         }
         public void onFinish() {
-            tv.setText("正在跳转");
+            time_welcome.setText("正在跳转");
         }
         public void onTick(long millisUntilFinished) {
-            tv.setText("倒计时：" + millisUntilFinished / 1000 + "秒");
+            time_welcome.setText("倒计时：" + millisUntilFinished / 1000 + "秒");
         }
     }
 }
