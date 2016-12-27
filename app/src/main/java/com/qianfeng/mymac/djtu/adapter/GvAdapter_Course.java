@@ -5,11 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.qianfeng.mymac.djtu.R;
-import com.qianfeng.mymac.djtu.entityclass.Gridview_Item;
+import com.qianfeng.mymac.djtu.entityclass2.CourseList;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -17,17 +16,18 @@ import org.xutils.x;
 import java.util.List;
 
 /**
- * Created by mymac on 2016/11/17.
+ * Created by mymac on 2016/12/24.
  */
 
-public class Frag1_GridView_Adapter extends BaseAdapter {
-
-    private List<Gridview_Item> list;
+public class GvAdapter_Course extends BaseAdapter {
     private Context context;
+    private List<CourseList.CourselistBean> list;
+    private LayoutInflater inflater;
 
-    public Frag1_GridView_Adapter(List<Gridview_Item> list, Context context) {
-        this.list = list;
+    public GvAdapter_Course(Context context, List<CourseList.CourselistBean> list) {
         this.context = context;
+        this.list = list;
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -49,26 +49,26 @@ public class Frag1_GridView_Adapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.gridview_item_layout_f1,null);
+            convertView = inflater.inflate(R.layout.item_course_layout,null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-            Gridview_Item item = list.get(position);
-            holder.text.setText(item.TEXT);
-            holder.image.setImageResource(item.ImageId);
-
+        CourseList.CourselistBean bean = list.get(position);
+        holder.tv_teacher.setText(bean.getTeacher());
+        holder.tv_cname.setText(bean.getCourse());
+        holder.tv_place.setText(bean.getPlace());
         return convertView;
     }
 
-    class ViewHolder {
-        @ViewInject(R.id.gridview_item_text) TextView text;
-        @ViewInject(R.id.gridview_item_image) ImageView image;
+        class ViewHolder{
+            @ViewInject(R.id.tv_teacher)TextView tv_teacher;
+            @ViewInject(R.id.tv_place)TextView tv_place;
+            @ViewInject(R.id.tv_cname)TextView tv_cname;
+            public ViewHolder(View view){
+                x.view().inject(this,view);
+            }
 
-        public ViewHolder(View view) {
-            x.view().inject(this,view);
-        }
     }
 }

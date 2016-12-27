@@ -4,7 +4,7 @@
     android:id="@+id/activity_news_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qianfeng.mymac.djtu.activity.NewsContentActivity">
+    tools:context="com.qianfeng.mymac.djtu.activity_content.NewsContentActivity">
     <WebView
         android:id="@+id/news_web"
         android:layout_width="match_parent"

@@ -1,21 +1,25 @@
 package com.qianfeng.mymac.djtu.activity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qianfeng.mymac.djtu.MyApplication;
 import com.qianfeng.mymac.djtu.R;
+import com.qianfeng.mymac.djtu.activity_function.DiscoverActivity;
 import com.qianfeng.mymac.djtu.entityclass.User;
 import com.qianfeng.mymac.djtu.fragment.campusFragment;
 import com.qianfeng.mymac.djtu.fragment.lifeFragment;
@@ -39,76 +43,178 @@ public class MainActivity extends AppCompatActivity {
     @ViewInject(R.id.activity_main)
     private DrawerLayout drawer_main;
 
-    private FragmentManager manager ;
+    @ViewInject(R.id.ce_button_back)
+    private ImageView ce_button_back;
+    @ViewInject(R.id.ce_tv_info)
+    private TextView ce_tv_info;
+    @ViewInject(R.id.ce_tv_about)
+    private TextView ce_tv_about;
+
+    private FragmentManager manager;
     private FragmentTransaction transaction;
 
     private MyApplication app;
     private User user;
-    private  String name;
+    private Boolean state;
 
+    private Fragment s ;
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        state = user.getLoginstate();
+        if (state) {
+            showislogin_main.setText(user.getSname());
+        } else {
+            showislogin_main.setText("未登陆");
+            //12
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //xxxxxxxxx
         x.view().inject(this);
 
         app = (MyApplication) getApplication();
         user = app.getUser();
-        name = user.getSname();
+        state = user.getLoginstate();
+        //改变
 
         //11
-        if (name!= null){
-            showislogin_main.setText(user.getSname()+"已登陆");
-        }else {
-            showislogin_main.setText("未登陆");
-        }
 
-        //12
         btn_drawerlayout_main.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    drawer_main.openDrawer(Gravity.RIGHT);
+                }
+            });
+        showislogin_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer_main.openDrawer(Gravity.RIGHT);
+                if (state){
+                    //对话框
+                    //退出 切换账号 取消
+                    dialog1_1();
+                }else {
+                    //未登录
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
-        manager = getSupportFragmentManager();
+        //
+        Bundle b = new Bundle();
+        b.putBoolean("key",state);
+        s = new studyFragment();
+        s.setArguments(b);
+        //
+            manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
-        transaction.add(R.id.fragmentcontainer_main, new studyFragment());
+        transaction.add(R.id.fragmentcontainer_main, s);
         transaction.commit();
-        //333
-        radiogroup_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                transaction = manager.beginTransaction();
-                switch (checkedId){
-                    case R.id.rb1_main:
+            //333
+            ce_button_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    drawer_main.closeDrawers();
+                }
+            });
+            ce_tv_info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ///
+                }
+            });
+            ce_tv_about.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ///
+                }
+            });
+            radiogroup_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    transaction = manager.beginTransaction();
+                    switch (checkedId) {
+                        case R.id.rb1_main:
+                            //
+                            Bundle b = new Bundle();
+                            b.putBoolean("key",state);
+                            s = new studyFragment();
+                            s.setArguments(b);
+                            transaction.replace(R.id.fragmentcontainer_main, s);
+                            break;
+                        case R.id.rb2_main:
+                            transaction.replace(R.id.fragmentcontainer_main, new lifeFragment());
+                            break;
+                        case R.id.rb3_main:
+                            //activity 跳转
+                            if (!state){
+                                Toast.makeText(MainActivity.this, "请先登录...", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Intent intentX = new Intent();
+                                intentX.setClass(MainActivity.this, DiscoverActivity.class);
+                                startActivity(intentX);
+                            }
+                            break;
+                        case R.id.rb4_main:
+                            transaction.replace(R.id.fragmentcontainer_main, new campusFragment());
+                            break;
+                        case R.id.rb5_main:
+                            if (state) {
 
-                        transaction.replace(R.id.fragmentcontainer_main,new studyFragment());
+                                transaction.replace(R.id.fragmentcontainer_main, new mineFragment());
+                            } else {
+                                Intent intent = new Intent();
+                                intent.setClass(MainActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+                            break;
+                    }
+                    transaction.commit();
+                }
+            });
+
+
+        }
+    private void dialog1_1(){
+        //先new出一个监听器，设置好监听
+        DialogInterface.OnClickListener dialogOnclicListener=new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch(which){
+                    case Dialog.BUTTON_POSITIVE:
+                        Toast.makeText(MainActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
+                        user.setLoginstate(false);
+                        onPostResume();
+                        transaction = manager.beginTransaction();
+                        transaction.replace(R.id.fragmentcontainer_main, s);
+                        transaction.commit();
                         break;
-                    case R.id.rb2_main:
-                        transaction.replace(R.id.fragmentcontainer_main,new lifeFragment());
+                    case Dialog.BUTTON_NEGATIVE:
+                        dialog.dismiss();
                         break;
-                    case R.id.rb3_main:
-                        //activity 跳转
-                        Toast.makeText(MainActivity.this, "发现窗体 哦～～还没完成", Toast.LENGTH_SHORT).show();
-                        //
-                        break;
-                    case R.id.rb4_main:
-                        transaction.replace(R.id.fragmentcontainer_main,new campusFragment());
-                        break;
-                    case R.id.rb5_main:
-                        if (name != null){
-                            transaction.replace(R.id.fragmentcontainer_main,new mineFragment());
-                        }else {
-                            //PopupWindow popupWindow =new PopupWindow();
-                            Toast.makeText(MainActivity.this, "未登陆，请登录", Toast.LENGTH_SHORT).show();
-                        }
+                    case Dialog.BUTTON_NEUTRAL:
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
                         break;
                 }
-                transaction.commit();
             }
-        });
-
-
+        };
+        //dialog参数设置
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);  //先得到构造器
+        builder.setTitle("退出账户"); //设置标题
+        builder.setMessage("是否确认退出?"); //设置内容
+        builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
+        builder.setPositiveButton("确定",dialogOnclicListener);
+        builder.setNegativeButton("取消", dialogOnclicListener);
+        builder.setNeutralButton("切换账户", dialogOnclicListener);
+        builder.create().show();
     }
+
 }
+

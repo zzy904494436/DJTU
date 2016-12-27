@@ -25,7 +25,23 @@
         </activity>
         <activity android:name=".activity.GuideActivity" />
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.NewsContentActivity"></activity>
+        <activity android:name=".activity_content.NewsContentActivity" />
+        <activity android:name=".activity_function.DiscoverActivity" />
+        <activity android:name=".activity_function.GradeActivity" />
+        <activity android:name=".activity_function.CourseActivity" />
+        <activity android:name=".activity_function.LostActivity" />
+        <activity android:name=".activity_function.BusActivity" />
+        <activity android:name=".activity_function.MapActivity" />
+        <activity android:name=".activity_function.IntroActivity" />
+        <activity android:name=".activity_function.LogoActivity" />
+        <activity android:name=".activity_function.LeaderActivity" />
+        <activity android:name=".activity_function.SceneActivity" />
+        <activity android:name=".activity_function.MajorActivity" />
+        <activity android:name=".activity_function.ContactActivity" />
+        <activity android:name=".activity_content.Discover1_ContentActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity_function.NewsActivity" />
+        <activity android:name=".activity_content.ChangeActivity"></activity>
     </application>
 
 </manifest>

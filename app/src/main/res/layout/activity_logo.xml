@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_logo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.qianfeng.mymac.djtu.activity_function.LogoActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@android:color/holo_blue_bright"
+        android:gravity="center_vertical"
+        >
+        <ImageView
+            android:id="@+id/btn_back_logo"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/searchbackbtn"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="学校标识"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/logo__intrp"
+        />
+</LinearLayout>

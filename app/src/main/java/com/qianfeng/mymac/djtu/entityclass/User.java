@@ -7,9 +7,10 @@ package com.qianfeng.mymac.djtu.entityclass;
 public class User {
     private int snumber ;
     private String sname ;
-    private String sphone ;
-    private String sex ;
+    private String XUEYUAN;
     private String majorAndClass ;
+    private String sphone;
+    private Boolean loginstate;
 
     public int getSnumber() {
         return snumber;
@@ -35,12 +36,12 @@ public class User {
         this.sphone = sphone;
     }
 
-    public String getSex() {
-        return sex;
+    public String getXUEYUAN() {
+        return XUEYUAN;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setXUEYUAN(String XUEYUAN) {
+        this.XUEYUAN = XUEYUAN;
     }
 
     public String getMajorAndClass() {
@@ -50,4 +51,13 @@ public class User {
     public void setMajorAndClass(String majorAndClass) {
         this.majorAndClass = majorAndClass;
     }
+
+    public Boolean getLoginstate() {
+        return loginstate;
+    }
+
+    public void setLoginstate(Boolean loginstate) {
+        this.loginstate = loginstate;
+    }
+
 }

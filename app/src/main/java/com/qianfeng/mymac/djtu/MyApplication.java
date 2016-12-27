@@ -1,6 +1,7 @@
 package com.qianfeng.mymac.djtu;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.qianfeng.mymac.djtu.entityclass.User;
 
@@ -20,6 +21,7 @@ public class MyApplication extends Application {
 
     public void setUser(User user) {
         this.user = user;
+
     }
 
     @Override
@@ -30,5 +32,7 @@ public class MyApplication extends Application {
         x.Ext.setDebug(true);
 
         user = new User();
+        user.setLoginstate(false);
+        Log.i("state : ",user.getLoginstate()+":appliion:"+user.getLoginstate());
     }
 }

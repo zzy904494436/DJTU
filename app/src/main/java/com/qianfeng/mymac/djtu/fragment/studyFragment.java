@@ -15,11 +15,14 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.qianfeng.mymac.djtu.R;
-import com.qianfeng.mymac.djtu.activity.NewsContentActivity;
-import com.qianfeng.mymac.djtu.adapter.Frag1_GridView_Adapter;
+import com.qianfeng.mymac.djtu.activity_function.CourseActivity;
+import com.qianfeng.mymac.djtu.activity_function.GradeActivity;
+import com.qianfeng.mymac.djtu.activity_function.NewsActivity;
+import com.qianfeng.mymac.djtu.adapter.Frag_GridView_Adapter;
 import com.qianfeng.mymac.djtu.adapter.Frag_Vps_Adapter;
 import com.qianfeng.mymac.djtu.entityclass.Gridview_Item;
 import com.qianfeng.mymac.djtu.entityclass.ViewP_News;
@@ -36,7 +39,7 @@ public class studyFragment extends Fragment {
     private GridView grid_frag1;
 
     private List<Gridview_Item> gridview_list;
-    private Frag1_GridView_Adapter grid_adapter;
+    private Frag_GridView_Adapter grid_adapter;
 
     private ViewPager image_pager_frag1;
     private List<ImageView> vps_list;
@@ -50,6 +53,8 @@ public class studyFragment extends Fragment {
 
     private TextView nofi_frag1;
     private TextView news_frag1;
+    private Intent intent;
+    private boolean state ;
 
     private boolean isrunning = true;
     private Handler handler = new Handler(){
@@ -72,6 +77,10 @@ public class studyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_study, container, false);
         //
+
+        Bundle b = getArguments();
+        state = b.getBoolean("key");
+
         nofi_frag1 = (TextView) view.findViewById(R.id.nofi_frag1);
         news_frag1 = (TextView) view.findViewById(R.id.news_frag1);
 
@@ -81,20 +90,25 @@ public class studyFragment extends Fragment {
         dots_pager_frag1 = (LinearLayout) view.findViewById(R.id.dots_pager_frag1);
         //
         init();
-        grid_adapter = new Frag1_GridView_Adapter(gridview_list, getActivity());
+        grid_adapter = new Frag_GridView_Adapter(gridview_list, getActivity());
         grid_frag1.setAdapter(grid_adapter);
 
+        intent = new Intent();
         nofi_frag1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intent.putExtra("type","2");
+                intent.setClass(getActivity(), NewsActivity.class);
+                startActivity(intent);
             }
         });
 
         news_frag1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intent.putExtra("type","1");
+                intent.setClass(getActivity(), NewsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -102,20 +116,28 @@ public class studyFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if (!state){
+                    Toast.makeText(getContext(), "请先登录，再使用本功能", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent();
+                    if (position == 0){
+                        intent.setClass(getActivity(),GradeActivity.class);
+                    }else {
+                        intent.setClass(getActivity(), CourseActivity.class);
+                    }
+                    startActivity(intent);
+                }
+
             }
         });
-        
         return view;
     }
 
     public void init() {
         // 关于 下半部分
         gridview_list = new ArrayList<>();
-        gridview_list.add(new Gridview_Item("早操", R.drawable.icon_exercise_normal));
-        gridview_list.add(new Gridview_Item("成绩", R.drawable.icon_professional_normal));
-        gridview_list.add(new Gridview_Item("课表", R.drawable.icon_table_normal));
-        gridview_list.add(new Gridview_Item("校历", R.drawable.icon_transcript_normal));
-        gridview_list.add(new Gridview_Item("添加", R.drawable.icon_transcript_normal));
+        gridview_list.add(new Gridview_Item("成绩查询", R.drawable.icon_transcript_normal));
+        gridview_list.add(new Gridview_Item("课表查询", R.drawable.icon_table_normal));
 
         //关 于   上半部分
         try {
@@ -219,7 +241,6 @@ public class studyFragment extends Fragment {
                         dots[0].setEnabled(false);
                     }
                     title_pager_frag1.setText(topics.get(currentPosition-1).getTitle());
-                    //
                 }
             }
         });

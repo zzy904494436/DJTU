@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="丢失物品"
+                />
+            <TextView
+                android:id="@+id/lost_good"
+                android:layout_marginTop="2dp"
+                android:text="iphone7"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="time:"
+                />
+        <TextView
+            android:id="@+id/lost_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016年4月a日 10:2:3"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_blue_bright"
+            />
+            </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lost_place"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="教 学 楼 j121"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_light"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="from:"
+                android:textStyle="italic"
+                />
+            <TextView
+                android:id="@+id/lost_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="zhannn"
+                android:textStyle="italic"
+                android:textSize="15sp"
+                android:textColor="@android:color/holo_blue_bright"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tel:"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            />
+        <TextView
+            android:id="@+id/lost_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12345678900"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_purple"
+            />
+    </LinearLayout>
+
+</LinearLayout>

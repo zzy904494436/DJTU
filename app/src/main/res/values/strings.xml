@@ -17,4 +17,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="passwd">密&#160;&#160;&#160;&#160;码</string>
+    <string name="plspas"><![CDATA[请输入密    码]]></string>
+    <string name="namex">姓&#160;&#160;&#160;&#160;名</string>
+    <string name="namepls"><![CDATA[请输入姓    名]]></string>
 </resources>

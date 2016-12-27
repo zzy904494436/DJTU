@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dep">
+        <item>全部</item>
+        <item>理学院 </item>
+        <item>软件学院</item>
+    </string-array>
+    <string-array name="term">
+        <item>全部</item>
+        <item>大一上学期 </item>
+        <item>大一下学期</item>
+    </string-array>
+</resources>

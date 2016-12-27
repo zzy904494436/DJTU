@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.qianfeng.mymac.djtu.activity.MainActivity;
-import com.qianfeng.mymac.djtu.activity.NewsContentActivity;
-import com.qianfeng.mymac.djtu.entityclass.ViewP_News;
+import com.qianfeng.mymac.djtu.activity_content.NewsContentActivity;
 
 import java.util.List;
 
@@ -57,6 +55,7 @@ public class Frag_Vps_Adapter extends PagerAdapter {
                  //跳转到详情界面
                 Intent intent = new Intent(context, NewsContentActivity.class);
                 intent.putExtra("id",list_id.get(position-1));
+                intent.putExtra("type","1");
                 // http://news.djtu.edu.cn/list/detail.asp?m=3&id=60482
                 context.startActivity(intent);
                 Toast.makeText(context, "点击了:"+position, Toast.LENGTH_SHORT).show();
